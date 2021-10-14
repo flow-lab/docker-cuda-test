@@ -1,0 +1,29 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+        # Setup project version
+    - name: Get version
+      id: version
+      run: |
+        VERSION="dev"
+        if [[ "${GITHUB_REF/refs\/tags\//}" != "refs/heads/"* ]] ; then
+          VERSION="${GITHUB_REF/refs\/tags\//}"
+        fi
+        echo ::set-output name=VERSION::${VERSION}
+    - name: Build the Docker image
+      run: |
+        DOCKER_VER=${VERSION#"v"}
+        docker build . --file Dockerfile --tag docker-cuda-test:$(DOCKER_VER)
