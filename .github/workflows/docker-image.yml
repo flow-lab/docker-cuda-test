@@ -8,6 +8,7 @@ on:
 
 env:
   IMAGE: docker-cuda-test
+  DOCKER_USERNAME: flowlab
 
 jobs:
 
@@ -29,7 +30,7 @@ jobs:
       run: |
         VERSION=${{ steps.version.outputs.VERSION }}
         DOCKER_VER=${VERSION#"v"}
-        docker build . --file Dockerfile --tag docker-cuda-test:${DOCKER_VER}
+        docker build . --file Dockerfile --tag ${DOCKER_USERNAME}/${IMAGE}:${DOCKER_VER}
 
     - name: Setup DockerHub
       run: |
