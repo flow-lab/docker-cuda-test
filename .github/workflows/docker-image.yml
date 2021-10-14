@@ -25,5 +25,6 @@ jobs:
         echo ::set-output name=VERSION::${VERSION}
     - name: Build the Docker image
       run: |
+        VERSION=${{ steps.version.outputs.VERSION }}
         DOCKER_VER=${VERSION#"v"}
         docker build . --file Dockerfile --tag docker-cuda-test:$(DOCKER_VER)
