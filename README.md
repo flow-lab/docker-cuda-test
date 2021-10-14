@@ -5,8 +5,8 @@ This is a test CUDA application that is build and run in docker. Use it for test
 
 ```shell
 # show driver details
-docker run -it --gpus all flowlab/docker-cuda-test:0.5.0 nvidia-smi
+docker run -it --gpus all flowlab/docker-cuda-test:0.7.0 nvidia-smi
 
 # run with 0.3.0 tag to test block sizes
-docker run -it --gpus all flowlab/docker-cuda-test:0.5.0
+docker run -it --gpus all flowlab/docker-cuda-test:0.7.0
 ```
