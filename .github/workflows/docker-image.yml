@@ -38,4 +38,4 @@ jobs:
 
     - name: Publish DockerHub
       run: |
-        docker push flowlab/$IMAGE
+        docker push --all-tags ${DOCKER_USERNAME}/${IMAGE}
