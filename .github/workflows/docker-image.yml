@@ -14,7 +14,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-        # Setup project version
     - name: Get version
       id: version
       run: |
@@ -28,3 +27,11 @@ jobs:
         VERSION=${{ steps.version.outputs.VERSION }}
         DOCKER_VER=${VERSION#"v"}
         docker build . --file Dockerfile --tag docker-cuda-test:${DOCKER_VER}
+
+    - name: Setup DockerHub
+      run: |
+        docker login --username flowlab --password ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Publish DockerHub
+      run: |
+        docker push flowlab/$IMAGE
