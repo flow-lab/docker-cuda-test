@@ -10,6 +10,6 @@ TAG=$(git describe --tags --abbrev=0)
 # show driver details
 docker run -it --gpus all flowlab/docker-cuda-test:${TAG} nvidia-smi
 
-# run with 0.3.0 tag to test block sizes
+# run
 docker run -it --gpus all flowlab/docker-cuda-test:${TAG}
 ```
