@@ -18,6 +18,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Get version
       id: version
       run: |
@@ -26,6 +27,7 @@ jobs:
           VERSION="${GITHUB_REF/refs\/tags\//}"
         fi
         echo ::set-output name=VERSION::${VERSION}
+
     - name: Build the Docker image
       run: |
         VERSION=${{ steps.version.outputs.VERSION }}
