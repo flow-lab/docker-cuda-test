@@ -12,4 +12,10 @@ docker run -it --gpus all flowlab/docker-cuda-test:${TAG} nvidia-smi
 
 # run
 docker run -it --gpus all flowlab/docker-cuda-test:${TAG}
+
+# Example nvidia-smi
+docker run -it --gpus all flowlab/docker-cuda-test:0.9.0 nvidia-smi
+
+# Example code run
+docker run -it --gpus all flowlab/docker-cuda-test:0.9.0
 ```
